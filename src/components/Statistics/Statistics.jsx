@@ -1,32 +1,40 @@
 import PropTypes from 'prop-types';
+import {
+  Container,
+  Title,
+  StatList,
+  StatListItem,
+  Label,
+  Percentage,
+} from './Statistics.styled';
 
-import { StatisticsContainer, Label, Quantity } from './Statistics.styled';
-
-export const Statistics = ({ userStatistics }) => {
-  const { followers, views, likes } = userStatistics;
-
+export const Statistics = ({ title, data }) => {
   return (
-    <StatisticsContainer>
-      <li>
-        <Label>Followers</Label>
-        <Quantity>{new Intl.NumberFormat('en-IN').format(followers)}</Quantity>
-      </li>
-      <li>
-        <Label>Views</Label>
-        <Quantity>{new Intl.NumberFormat('en-IN').format(views)}</Quantity>
-      </li>
-      <li>
-        <Label>Likes</Label>
-        <Quantity>{new Intl.NumberFormat('en-IN').format(likes)}</Quantity>
-      </li>
-    </StatisticsContainer>
+    <Container>
+      <Title>{title}</Title>
+      <StatList>
+        {data.map(({ id, label, percentage }) => (
+          <StatListItem key={id}>
+            <Label>{label}</Label>
+            <Percentage>
+              {new Intl.NumberFormat('en-IN', { style: 'percent' }).format(
+                percentage / 100,
+              )}
+            </Percentage>
+          </StatListItem>
+        ))}
+      </StatList>
+    </Container>
   );
 };
 
 Statistics.propTypes = {
-  userStatistics: PropTypes.exact({
-    followers: PropTypes.number.isRequired,
-    views: PropTypes.number.isRequired,
-    likes: PropTypes.number.isRequired,
-  }),
+  title: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    }),
+  ),
 };

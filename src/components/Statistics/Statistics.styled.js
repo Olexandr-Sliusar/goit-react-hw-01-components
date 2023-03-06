@@ -1,27 +1,54 @@
 import styled from '@emotion/styled';
 
-export const StatisticsContainer = styled.ul`
+export const Container = styled.section`
+  width: 500px;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+`;
+
+export const Title = styled.h2`
+  font-size: 22px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 25px 0;
+  border: solid 1px #e5eaf1;
+  font-weight: 700;
+`;
+export const StatList = styled.ul`
   display: flex;
-  width: 300px;
-  // outline: 2px dashed #8ad9ff;
-  background-color: #f3f6f9;
-  list-style-type: none;
+  justify-content: space-evenly;
+`;
 
-  li {
-    display: flex;
-    flex-basis: calc(100% / 3);
-    align-items: center;
-    flex-direction: column;
+const setBgColor = () => {
+  return `#${Math.floor(Math.random() * 16777214)
+    .toString(16)
+    .padStart(6, '0')}`;
+};
 
-    border: solid 1px #e5eaf1;
-    padding: 20px 0;
+export const StatListItem = styled.li`
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: calc(100% / 5);
+  background-color: ${setBgColor};
+  color: #ffffff;
+  padding: 10px 0 20px;
+
+  &:first-child {
+    border-bottom-left-radius: 5px 5px;
+  }
+
+  &:last-child {
+    border-bottom-right-radius: 5px 5px;
   }
 `;
+
 export const Label = styled.span`
-  color: #818f9d;
-  font-weight: 400;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
-export const Quantity = styled.span`
-  font-weight: 700;
+export const Percentage = styled.span`
+  font-size: 22px;
 `;

@@ -7,7 +7,7 @@ import {
   UserTag,
   Location,
 } from './Profile.styled';
-import { Statistics } from 'components/Statistics/Statistics';
+import { Statistics } from 'components/UserStatistics/Statistics';
 
 export const Profile = ({ userData }) => {
   const { username, tag, location, avatar, stats } = userData;

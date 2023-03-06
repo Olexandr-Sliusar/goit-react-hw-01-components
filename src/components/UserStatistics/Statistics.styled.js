@@ -12,7 +12,6 @@ export const Container = styled.ul`
     flex-basis: calc(100% / 3);
     align-items: center;
     flex-direction: column;
-
     border: solid 1px #e5eaf1;
     padding: 20px 0;
   }
