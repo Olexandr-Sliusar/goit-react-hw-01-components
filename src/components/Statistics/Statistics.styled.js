@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.section`
   width: 500px;
-  border-radius: 4px;
+  margin: 0 0 30px;
   background-color: #fff;
   font-size: 14px;
   font-weight: 400;
